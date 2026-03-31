@@ -12,3 +12,7 @@ export interface GetUsersData {
 export interface GetUserByIdData {
   getUserById: User | null;
 }
+
+export interface GetUserByIdVars {
+  id: string;
+}
