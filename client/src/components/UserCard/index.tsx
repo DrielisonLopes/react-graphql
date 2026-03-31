@@ -6,7 +6,7 @@ interface Props {
 
 export const UserCard = ({ user }: Props) => {
   return (
-    <div>
+    <div className="card">
       <p>Name: {user.name}</p>
       <p>Age: {user.age}</p>
       <p>Is Married: {user.isMarried ? "Yes" : "No"}</p>

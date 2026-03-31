@@ -6,8 +6,7 @@ import { SelectedUser } from "./components/SelectedUser";
 function App() {
   return (
     <>
-      <h1>Home</h1>
-
+      <h1>GraphQL</h1>
       <CreateUserForm />
       <UserList />
       <SelectedUser />

@@ -3,7 +3,7 @@ import { useCreateUser } from "../../hooks/useCreateUser";
 
 export const CreateUserForm = () => {
   const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState<number | "">("");
   const [isMarried, setIsMarried] = useState(false);
 
   const { createUser, loading } = useCreateUser();
@@ -11,10 +11,13 @@ export const CreateUserForm = () => {
   const handleSubmit = async () => {
     if (!name.trim()) return;
 
-    await createUser({ name, age, isMarried });
+    if (age === "" || isNaN(Number(age))) return;
+
+    const ageNum = Number(age);
+    await createUser({ name, age: ageNum, isMarried });
 
     setName("");
-    setAge(0);
+    setAge("");
     setIsMarried(false);
   };
 
@@ -33,7 +36,9 @@ export const CreateUserForm = () => {
         type="number"
         placeholder="Age"
         value={age}
-        onChange={(e) => setAge(Number(e.target.value))}
+        onChange={(e) =>
+          setAge(e.target.value === "" ? "" : Number(e.target.value))
+        }
       />
 
       <label>
